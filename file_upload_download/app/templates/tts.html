@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Submit New Text</h2>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      <label for="text_input" class="form-label">Enter new text:</label>
+      {{ form.text_input(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Again</button>
+  </form>
+
+{% endblock content %}

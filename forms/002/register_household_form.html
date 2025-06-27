@@ -1,0 +1,388 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class="container my-4">
+  <h1 class="mb-3">Household Registration Form</h1>
+  <p class="text-muted">Page 2 of 3 (Birmingham City Council)</p>
+
+  <form method="POST" action="/register_household_form">
+    <!-- 1. Primary Applicant Details -->
+    <h4 class="mt-4">Primary Applicant Details</h4>
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title *</label>
+      <select class="form-select" id="title" name="title" required>
+        <option value="">Please choose</option>
+        <option>Mr</option>
+        <option>Mrs</option>
+        <option>Ms</option>
+        <option>Miss</option>
+        <option>Dr</option>
+        <!-- Add more if needed -->
+      </select>
+    </div>
+
+    <!-- First Name(s) -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Your first name(s) *</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name..." required>
+      <small class="text-muted">
+        As shown on official documents (birth certificate, passport, etc.).
+      </small>
+    </div>
+
+    <!-- Middle Name -->
+    <div class="mb-3">
+      <label for="middleName" class="form-label">Your middle name</label>
+      <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Middle name...">
+    </div>
+
+    <!-- Surname -->
+    <div class="mb-3">
+      <label for="surname" class="form-label">Your surname *</label>
+      <input type="text" class="form-control" id="surname" name="surname" placeholder="Family name..." required>
+      <small class="text-muted">
+        As shown on official documents (birth certificate, passport, etc.).
+      </small>
+    </div>
+
+    <!-- Different Name Before -->
+    <div class="mb-3">
+      <label for="differentName" class="form-label">
+        Have you ever used a different name? (e.g., maiden name, deed poll)
+      </label>
+      <input type="text" class="form-control" id="differentName" name="differentName" placeholder="Enter details if applicable">
+    </div>
+
+    <!-- National Insurance Number -->
+    <div class="mb-3">
+      <label for="niNumber" class="form-label">Your National Insurance Number *</label>
+      <input type="text" class="form-control" id="niNumber" name="niNumber" placeholder="AB 12 34 56 C" required>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="mb-3">
+      <label for="dob" class="form-label">Your date of birth *</label>
+      <input type="date" class="form-control" id="dob" name="dob" required>
+      <small class="text-muted">Format: YYYY-MM-DD (or use your browser’s date picker).</small>
+    </div>
+
+    <!-- Sex -->
+    <div class="mb-3">
+      <label for="sex" class="form-label">Your sex *</label>
+      <select class="form-select" id="sex" name="sex" required>
+        <option value="">Please choose</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other / Prefer not to say</option>
+      </select>
+    </div>
+
+    <!-- Lived Abroad? -->
+    <div class="mb-3">
+      <label class="form-label">Have you or any member of your household lived abroad in the last 5 years? *</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="livedAbroad" id="livedAbroadYes" value="Yes" required>
+        <label class="form-check-label" for="livedAbroadYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="livedAbroad" id="livedAbroadNo" value="No" required>
+        <label class="form-check-label" for="livedAbroadNo">No</label>
+      </div>
+    </div>
+
+    <!-- 2. Current Address -->
+    <h4 class="mt-4">Current Address</h4>
+    <div class="mb-3">
+      <label for="postCode" class="form-label">Postcode *</label>
+      <input type="text" class="form-control" id="postCode" name="postCode" placeholder="e.g., B1 1BB" required>
+    </div>
+    <!-- Address line 1 -->
+    <div class="mb-3">
+      <label for="addressLine1" class="form-label">Address line 1 *</label>
+      <input type="text" class="form-control" id="addressLine1" name="addressLine1"
+             placeholder="House/Flat number and street name" required>
+    </div>
+    <!-- Address line 2 -->
+    <div class="mb-3">
+      <label for="addressLine2" class="form-label">Address line 2 *</label>
+      <input type="text" class="form-control" id="addressLine2" name="addressLine2"
+             placeholder="Second line of your address" required>
+    </div>
+    <!-- Address line 3 -->
+    <div class="mb-3">
+      <label for="addressLine3" class="form-label">Address line 3</label>
+      <input type="text" class="form-control" id="addressLine3" name="addressLine3"
+             placeholder="Third line of your address">
+    </div>
+    <!-- Address line 4 -->
+    <div class="mb-3">
+      <label for="addressLine4" class="form-label">Address line 4</label>
+      <input type="text" class="form-control" id="addressLine4" name="addressLine4"
+             placeholder="Fourth line of your address">
+    </div>
+
+    <!-- Date Moved In -->
+    <div class="mb-3">
+      <label for="dateMovedIn" class="form-label">Date you moved into this address *</label>
+      <input type="date" class="form-control" id="dateMovedIn" name="dateMovedIn" required>
+    </div>
+
+    <!-- Rented Property? -->
+    <div class="mb-3">
+      <label class="form-label">Is this a rented property? *</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="isRented" id="rentedYes" value="Yes" required>
+        <label class="form-check-label" for="rentedYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="isRented" id="rentedNo" value="No" required>
+        <label class="form-check-label" for="rentedNo">No</label>
+      </div>
+    </div>
+
+    <!-- Correspondence Address -->
+    <div class="mb-3">
+      <label class="form-label">Where should letters about your application be sent?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="correspondenceChoice" id="useCurrent" value="current" checked>
+        <label class="form-check-label" for="useCurrent">To my current address</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="correspondenceChoice" id="useDifferent" value="different">
+        <label class="form-check-label" for="useDifferent">To a different address</label>
+      </div>
+    </div>
+
+    <!-- Another local authority placed you here? -->
+    <div class="mb-3">
+      <label class="form-label">Were you placed at this address by another local Authority?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="placedByLA" id="placedYes" value="Yes">
+        <label class="form-check-label" for="placedYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="placedByLA" id="placedNo" value="No">
+        <label class="form-check-label" for="placedNo">No</label>
+      </div>
+    </div>
+
+    <!-- 3. Contact Details -->
+    <h4 class="mt-4">Contact Details</h4>
+    <div class="mb-3">
+      <label for="homePhone" class="form-label">Home telephone *</label>
+      <input type="tel" class="form-control" id="homePhone" name="homePhone" required>
+    </div>
+    <div class="mb-3">
+      <label for="workPhone" class="form-label">Work telephone</label>
+      <input type="tel" class="form-control" id="workPhone" name="workPhone">
+    </div>
+    <div class="mb-3">
+      <label for="mobilePhone" class="form-label">Mobile telephone</label>
+      <input type="tel" class="form-control" id="mobilePhone" name="mobilePhone">
+    </div>
+    <div class="mb-3">
+      <label for="emailAddress" class="form-label">Email *</label>
+      <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
+    </div>
+    <div class="mb-3">
+      <label for="reEmailAddress" class="form-label">Please re-enter your email address *</label>
+      <input type="email" class="form-control" id="reEmailAddress" name="reEmailAddress" required>
+    </div>
+
+    <!-- 4. Equality & Diversity Monitoring -->
+    <h4 class="mt-4">Equality and Diversity Monitoring</h4>
+    <!-- Ethnic group -->
+    <div class="mb-3">
+      <label for="ethnicGroup" class="form-label">What is your ethnic group? *</label>
+      <select class="form-select" id="ethnicGroup" name="ethnicGroup" required>
+        <option value="">Please choose</option>
+        <option>White British</option>
+        <option>White Other</option>
+        <option>Black or Black British African</option>
+        <option>Black or Black British Caribbean</option>
+        <option>Asian or Asian British - Pakistani</option>
+        <option>Asian or Asian British - Indian</option>
+        <option>Mixed / Multiple Ethnic Groups</option>
+        <option>Other Ethnic Group</option>
+      </select>
+    </div>
+
+    <!-- Nationality -->
+    <div class="mb-3">
+      <label for="nationality" class="form-label">What is your nationality? *</label>
+      <select class="form-select" id="nationality" name="nationality" required>
+        <option value="">Please choose</option>
+        <option>UK Citizen</option>
+        <option>EU / EEA Citizen</option>
+        <option>Refugee or Asylum Seeker</option>
+        <option>Other Non-UK / Non-EEA</option>
+      </select>
+    </div>
+
+    <!-- Sexual orientation -->
+    <div class="mb-3">
+      <label for="sexualOrientation" class="form-label">What is your sexual orientation? *</label>
+      <select class="form-select" id="sexualOrientation" name="sexualOrientation" required>
+        <option value="">Please choose</option>
+        <option>Heterosexual / Straight</option>
+        <option>Gay or Lesbian</option>
+        <option>Bisexual</option>
+        <option>Other / Prefer not to say</option>
+      </select>
+    </div>
+
+    <!-- Religion or belief -->
+    <div class="mb-3">
+      <label for="religion" class="form-label">What is your religion or belief? *</label>
+      <select class="form-select" id="religion" name="religion" required>
+        <option value="">Please choose</option>
+        <option>Christian</option>
+        <option>Muslim</option>
+        <option>Hindu</option>
+        <option>Sikh</option>
+        <option>Jewish</option>
+        <option>Buddhist</option>
+        <option>No religion</option>
+        <option>Other / Prefer not to say</option>
+      </select>
+    </div>
+
+    <!-- Physical or mental conditions? -->
+    <div class="mb-3">
+      <label class="form-label">
+        Do you have any physical or mental health conditions lasting 12+ months? *
+      </label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hasCondition" id="conditionYes" value="Yes" required>
+        <label class="form-check-label" for="conditionYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hasCondition" id="conditionNo" value="No" required>
+        <label class="form-check-label" for="conditionNo">No</label>
+      </div>
+    </div>
+
+    <!-- Preferred Language -->
+    <div class="mb-3">
+      <label for="preferredLanguage" class="form-label">Which language do you prefer? *</label>
+      <select class="form-select" id="preferredLanguage" name="preferredLanguage" required>
+        <option value="">Please choose</option>
+        <option>English</option>
+        <option>Urdu</option>
+        <option>Punjabi</option>
+        <option>Arabic</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- Require Interpreter? -->
+    <div class="mb-3">
+      <label class="form-label">Do you require an interpreter?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="requireInterpreter" id="interpreterYes" value="Yes">
+        <label class="form-check-label" for="interpreterYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="requireInterpreter" id="interpreterNo" value="No" checked>
+        <label class="form-check-label" for="interpreterNo">No</label>
+      </div>
+    </div>
+
+    <!-- 5. Eligibility -->
+    <h4 class="mt-4">Eligibility</h4>
+    <div class="mb-3">
+      <label for="currentTenure" class="form-label">What is your current tenure? *</label>
+      <select class="form-select" id="currentTenure" name="currentTenure" required>
+        <option value="">Please choose</option>
+        <option>Council Tenant</option>
+        <option>Housing Association Tenant</option>
+        <option>Private Rented</option>
+        <option>Owner Occupier</option>
+        <option>Living with Friends/Family</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="areYou" class="form-label">Are you? *</label>
+      <select class="form-select" id="areYou" name="areYou" required>
+        <option value="">Please choose</option>
+        <option>UK or Irish citizen</option>
+        <option>EEA citizen (includes EU) or Swiss national</option>
+        <option>Person from abroad with limited leave</option>
+        <option>Other / Unsure</option>
+      </select>
+      <small class="text-muted">
+        This helps determine eligibility if you are a person from abroad.
+      </small>
+    </div>
+
+    <!-- Connection to Birmingham -->
+    <div class="mb-3">
+      <label for="connection" class="form-label">
+        In order to help us understand why you want to live in Birmingham, please choose from these options:
+      </label>
+      <select class="form-select" id="connection" name="connection" required>
+        <option value="">Select an option</option>
+        <option>I have lived in Birmingham for at least 24 months</option>
+        <option>I am currently employed or have a confirmed offer of employment in Birmingham</option>
+        <option>Birmingham City Council placed me outside of Birmingham (homeless duty)</option>
+        <option>I am in or will undertake training/education in Birmingham (6+ months)</option>
+        <option>I have a caring responsibility for someone in Birmingham</option>
+        <option>I am a care leaver (18-21 or 22-25 with continuing duty) of BCC</option>
+        <option>I need specialist medical/support services only available in Birmingham</option>
+        <option>I am current or former member of HM Armed Forces</option>
+        <option>I have near relatives in Birmingham (5+ years) or need to escape violence/harm</option>
+        <option>None of the above</option>
+      </select>
+    </div>
+
+    <!-- 6. Login Details -->
+    <h4 class="mt-4">Login Details</h4>
+    <p>Please set a memorable date and password to use when you log in next.</p>
+
+    <!-- Memorable Date -->
+    <div class="mb-3">
+      <label for="memorableDate" class="form-label">Enter your new memorable date *</label>
+      <input type="date" class="form-control" id="memorableDate" name="memorableDate" required>
+      <small class="text-muted">Format: DD/MM/YYYY (e.g., 30/12/1999)</small>
+    </div>
+    <div class="mb-3">
+      <label for="memorableDate2" class="form-label">Re-enter your new memorable date *</label>
+      <input type="date" class="form-control" id="memorableDate2" name="memorableDate2" required>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="newPassword" class="form-label">Enter your new password *</label>
+      <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+      <small class="text-muted">
+        Must be 6-10 characters, at least 1 lowercase letter, 1 uppercase letter, and 1 number.
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="rePassword" class="form-label">Enter your new password again *</label>
+      <input type="password" class="form-control" id="rePassword" name="rePassword" required>
+      <small class="text-muted">
+        Must match the above password.
+      </small>
+    </div>
+
+    <!-- Submit Buttons -->
+    <div class="mt-4">
+      <a href="/previous-page" class="btn btn-secondary me-2">Previous Page</a>
+      <button type="submit" class="btn btn-primary">Next Page</button>
+    </div>
+  </form>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+  <h1>Blue Badge Application</h1>
+  <form method="POST" action="{{ url_for('blue_badge_form') }}">
+    {{ form.hidden_tag() }}
+
+    <!-- Personal Details -->
+    <h4 class="mt-3">Personal Details</h4>
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name *</label>
+      {{ form.fullName(class="form-control", id="fullName") }}
+    </div>
+    <div class="mb-3">
+      <label for="niNumber" class="form-label">National Insurance Number *</label>
+      {{ form.niNumber(class="form-control", id="niNumber") }}
+    </div>
+
+    <!-- Address -->
+    <h4 class="mt-4">Address</h4>
+    <div class="mb-3">
+      <label for="addressLine1" class="form-label">Address Line 1 *</label>
+      {{ form.addressLine1(class="form-control", id="addressLine1") }}
+    </div>
+    <div class="mb-3">
+      <label for="addressLine2" class="form-label">Address Line 2</label>
+      {{ form.addressLine2(class="form-control", id="addressLine2") }}
+    </div>
+    <div class="mb-3">
+      <label for="postCode" class="form-label">Postcode *</label>
+      {{ form.postCode(class="form-control", id="postCode") }}
+    </div>
+
+    <!-- Mobility Details -->
+    <h4 class="mt-4">Mobility Details</h4>
+    <div class="mb-3">
+      <label for="mobilityAid" class="form-label">Do you use any mobility aids?</label>
+      {{ form.mobilityAid(class="form-control", id="mobilityAid") }}
+    </div>
+    <div class="mb-3">
+      <label for="mobilityIssues" class="form-label">Describe your mobility issues</label>
+      {{ form.mobilityIssues(class="form-control", rows="3", id="mobilityIssues") }}
+    </div>
+
+    <!-- Contact Info -->
+    <h4 class="mt-4">Contact Info</h4>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number</label>
+      {{ form.phone(class="form-control", id="phone") }}
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      {{ form.email(class="form-control", id="email") }}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-4">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+{% endblock content %}

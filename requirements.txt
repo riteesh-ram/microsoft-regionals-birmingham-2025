@@ -1,0 +1,9 @@
+openai
+dotenv
+bs4
+numpy
+langchain_openai
+pickle
+assemblyai
+sounddevice
+scipy

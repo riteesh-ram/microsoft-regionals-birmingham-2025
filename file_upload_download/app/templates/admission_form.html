@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Main container -->
+<div class="container my-5">
+  <!-- Optional breadcrumb/steps -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">1. Register or Sign In</li>
+      <li class="breadcrumb-item active">2. Applicant Information</li>
+      <li class="breadcrumb-item">3. Child Details</li>
+      <li class="breadcrumb-item">4. Submit Application</li>
+    </ol>
+  </nav>
+
+  <h1 class="mb-4">School Admissions Form</h1>
+  <p>Information About Yourself</p>
+  <p class="text-muted">
+    Please note: The asterisk (*) indicates required information.
+  </p>
+
+  <!-- Form that now includes the CSRF token via hidden_tag() -->
+  <form method="POST" action="/admission_form">
+    {{ form.hidden_tag() }}
+    <!-- 1. Your Name Section -->
+    <h4 class="mt-4">1. Your Name</h4>
+    <div class="row g-3">
+      <!-- Title Select -->
+      <div class="col-md-3">
+        <label for="title" class="form-label">Title (e.g. Mr/Mrs/Ms)</label>
+        <select class="form-select" id="title" name="title">
+          <option value="">-- Select Title --</option>
+          <option>Mr</option>
+          <option>Mrs</option>
+          <option>Ms</option>
+          <option>Miss</option>
+          <option>Dr</option>
+        </select>
+      </div>
+
+      <!-- Other Title -->
+      <div class="col-md-3">
+        <label for="other_title" class="form-label">Other Title</label>
+        <input type="text" class="form-control" id="other_title" name="other_title">
+      </div>
+
+      <!-- Forename -->
+      <div class="col-md-3">
+        <label for="forename" class="form-label">Forename *</label>
+        <input type="text" class="form-control" id="forename" name="forename" required>
+      </div>
+
+      <!-- Middle Name -->
+      <div class="col-md-3">
+        <label for="middle_name" class="form-label">Middle Name</label>
+        <input type="text" class="form-control" id="middle_name" name="middle_name">
+      </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+      <!-- Surname -->
+      <div class="col-md-3">
+        <label for="surname" class="form-label">Surname *</label>
+        <input type="text" class="form-control" id="surname" name="surname" required>
+      </div>
+    </div>
+
+    <!-- 2. Your Contact Details -->
+    <h4 class="mt-4">2. Your Contact Details</h4>
+    <p class="text-muted">
+      As the applicant, you must be an adult responsible for applying for a school place for the child.
+    </p>
+    <!-- (Optional) Look Up Address button, purely visual -->
+    <button type="button" class="btn btn-secondary mb-3">Look Up Address</button>
+
+    <div class="row g-3">
+      <div class="col-md-2">
+        <label for="flat_number" class="form-label">Flat Number</label>
+        <input type="text" class="form-control" id="flat_number" name="flat_number">
+      </div>
+      <div class="col-md-3">
+        <label for="building_name" class="form-label">Building Name</label>
+        <input type="text" class="form-control" id="building_name" name="building_name">
+      </div>
+      <div class="col-md-3">
+        <label for="house_number_name" class="form-label">House Number/Name *</label>
+        <input type="text" class="form-control" id="house_number_name" name="house_number_name" required>
+      </div>
+      <div class="col-md-4">
+        <label for="street" class="form-label">Street *</label>
+        <input type="text" class="form-control" id="street" name="street" required>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+      <div class="col-md-4">
+        <label for="district" class="form-label">District</label>
+        <input type="text" class="form-control" id="district" name="district">
+      </div>
+      <div class="col-md-4">
+        <label for="town" class="form-label">Town *</label>
+        <input type="text" class="form-control" id="town" name="town" required>
+      </div>
+      <div class="col-md-4">
+        <label for="county" class="form-label">County *</label>
+        <input type="text" class="form-control" id="county" name="county" required>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+      <div class="col-md-3">
+        <label for="post_code" class="form-label">Post Code *</label>
+        <input type="text" class="form-control" id="post_code" name="post_code" required>
+      </div>
+      <div class="col-md-3">
+        <label for="country" class="form-label">Country *</label>
+        <input type="text" class="form-control" id="country" name="country" value="England" required>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-3">
+        <label for="home_phone" class="form-label">Home Telephone</label>
+        <input type="text" class="form-control" id="home_phone" name="home_phone">
+      </div>
+      <div class="col-md-3">
+        <label for="work_phone" class="form-label">Work Telephone</label>
+        <input type="text" class="form-control" id="work_phone" name="work_phone">
+      </div>
+      <div class="col-md-3">
+        <label for="mobile_phone" class="form-label">Mobile Telephone *</label>
+        <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" required>
+      </div>
+      <div class="col-md-3">
+        <label for="email_address" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email_address" name="email_address">
+      </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-12">
+        <label for="contact_notes" class="form-label">Alternative Contact Notes (max 200 characters)</label>
+        <textarea class="form-control" id="contact_notes" name="contact_notes" rows="3" maxlength="200"></textarea>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-4">
+        <label for="preferred_communication" class="form-label">Preferred Communication Method *</label>
+        <select class="form-select" id="preferred_communication" name="preferred_communication" required>
+          <option value="">-- Select Method --</option>
+          <option>Phone</option>
+          <option>Email</option>
+          <option>Mail</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Submit Application</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

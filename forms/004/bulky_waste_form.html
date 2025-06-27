@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+  <h1>Bulky Waste Collection Request Form</h1>
+  <form method="POST" action="/bulky_waste_form">
+    <!-- Applicant Details -->
+    <h4 class="mt-3">Your Details</h4>
+    <div class="mb-3">
+      <label for="applicantName" class="form-label">Full Name *</label>
+      <input type="text" class="form-control" id="applicantName" name="applicantName" required>
+    </div>
+    <div class="mb-3">
+      <label for="contactNumber" class="form-label">Contact Number *</label>
+      <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+    </div>
+
+    <!-- Address -->
+    <h4 class="mt-4">Address</h4>
+    <div class="mb-3">
+      <label for="houseNum" class="form-label">House Number/Name *</label>
+      <input type="text" class="form-control" id="houseNum" name="houseNum" required>
+    </div>
+    <div class="mb-3">
+      <label for="street" class="form-label">Street *</label>
+      <input type="text" class="form-control" id="street" name="street" required>
+    </div>
+    <div class="mb-3">
+      <label for="postcode" class="form-label">Postcode *</label>
+      <input type="text" class="form-control" id="postcode" name="postcode" required>
+    </div>
+
+    <!-- Items to Collect -->
+    <h4 class="mt-4">Items to Collect</h4>
+    <p class="text-muted">List each bulky item you need removed (e.g. sofa, mattress, fridge).</p>
+    <div class="mb-3">
+      <label for="items" class="form-label">Items (max 200 chars) *</label>
+      <textarea class="form-control" id="items" name="items" rows="3" maxlength="200" required></textarea>
+    </div>
+
+    <!-- Preferred Date -->
+    <h4 class="mt-4">Preferred Collection Date</h4>
+    <div class="mb-3">
+      <input type="date" class="form-control" id="collectionDate" name="collectionDate" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit Request</button>
+  </form>
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>
+{% endblock %}
